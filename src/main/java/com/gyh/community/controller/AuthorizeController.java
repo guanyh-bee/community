@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @author gyh
  * @create 2020-07-06 14:55
@@ -17,7 +19,7 @@ public class AuthorizeController {
     @Autowired
     private GithubProvider githubProvider;
     @GetMapping("callback")
-    public String callback(@RequestParam("code")String code,@RequestParam("state")String state){
+    public String callback(@RequestParam("code")String code, @RequestParam("state")String state, HttpSession session){
         AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
         accessTokenDTO.setClient_id("Iv1.17b170297832cc61");
         accessTokenDTO.setClient_secret("4f63b4e0015557ce11572e9bc4f37cf06ce26b49");
@@ -26,8 +28,12 @@ public class AuthorizeController {
         accessTokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser user = githubProvider.getUser(accessToken);
-        System.out.println(user.getName());
-        return "index";
+        if(user == null){
+            return "redirect:/";
+        }else {
+            session.setAttribute("user",user);
+            return "redirect:/";
+        }
     }
 
 
