@@ -32,6 +32,18 @@ public class PublishController {
     @PostMapping("/publish")
     public String doPublish(Question question, HttpSession session, Model model, HttpServletRequest request){
         model.addAttribute("question",question);
+        if(question.getTitle()==""){
+            model.addAttribute("msg","标题不能为空");
+            return "publish";
+        }
+        if(question.getDescription()==""){
+            model.addAttribute("msg","问题补充不能为空");
+            return "publish";
+        }
+        if(question.getTag()==""){
+            model.addAttribute("msg","标签不能为空");
+            return "publish";
+        }
         Cookie[] cookies = request.getCookies();
         User user = null;
         if(cookies!=null){
