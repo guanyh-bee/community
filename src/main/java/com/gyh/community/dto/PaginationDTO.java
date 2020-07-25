@@ -24,11 +24,18 @@ public class PaginationDTO {
 
         //获取总页数
 
+
+
         if (totalCount % size == 0) {
             totalPage = totalCount / size;
         } else {
             totalPage = totalCount / size + 1;
         }
+
+        if(totalCount == 0){
+            totalPage = 1;
+        }
+
         if (page < 1) {
             page = 1;
         }

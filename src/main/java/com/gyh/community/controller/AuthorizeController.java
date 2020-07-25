@@ -34,7 +34,7 @@ public class AuthorizeController {
         accessTokenDTO.setClient_id("Iv1.17b170297832cc61");
         accessTokenDTO.setClient_secret("4f63b4e0015557ce11572e9bc4f37cf06ce26b49");
         accessTokenDTO.setCode(code);
-        accessTokenDTO.setRedirect_uri("http://localhost:8080/callback");
+        accessTokenDTO.setRedirect_uri("http://localhost:9999/callback");
         accessTokenDTO.setState(state);
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUseruser = githubProvider.getUser(accessToken);

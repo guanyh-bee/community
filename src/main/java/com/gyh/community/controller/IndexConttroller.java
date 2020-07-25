@@ -48,10 +48,10 @@ public class IndexConttroller {
                     User user = userMapper.findByToken(token);
                     if (user != null) {
                         request.getSession().setAttribute("user", user);
+                        break;
                     }
-                    break;
                 }
-                ;
+
             }
         }
         PaginationDTO pagination = questionService.list(page,size);
