@@ -5,12 +5,16 @@ import com.gyh.community.dto.GithubUser;
 import com.gyh.community.mapper.UserMapper;
 import com.gyh.community.model.User;
 import com.gyh.community.provider.GithubProvider;
+import com.gyh.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.UUID;
@@ -24,8 +28,8 @@ public class AuthorizeController {
     @Autowired
     private GithubProvider githubProvider;
 
-    @Autowired(required = false)
-    UserMapper userMapper;
+    @Autowired
+    UserService userService;
     
 
     @GetMapping("callback")
@@ -43,18 +47,24 @@ public class AuthorizeController {
         }else {
             User user = new User();
             user.setAccountId(String.valueOf(githubUseruser.getId()));
-            user.setGmtCreate(System.currentTimeMillis());
-            user.setGmtModified(System.currentTimeMillis());
             user.setName(githubUseruser.getName());
             String token = UUID.randomUUID().toString();
             user.setToken(token);
             user.setAvatar(githubUseruser.getAvatar_url());
-
+            user = userService.createOrUpdate(user);
             response.addCookie(new Cookie("token",token));
-            userMapper.insert(user);
+            session.setAttribute("user",user);
             return "redirect:/";
         }
     }
+    @RequestMapping("/logout")
+    public String logout(HttpServletRequest request, HttpServletResponse response){
+        request.getSession().removeAttribute("user");
+        Cookie cookie = new Cookie("token", null);
 
+        cookie.setMaxAge(0);
+        response.addCookie(cookie);
 
+        return "redirect:/";
+    }
 }

@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>发布 - 管运好的社区</title>
-    <script src="js/jquery-3.5.1.min.js" type="application/javascript"></script>
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="css/community.css">
-    <script src="js/bootstrap.min.js" type="application/javascript"></script>
+    <script src="/js/jquery-3.5.1.min.js" type="application/javascript"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="/css/community.css">
+    <script src="/js/bootstrap.min.js" type="application/javascript"></script>
 
 
 </head>
@@ -19,6 +19,7 @@
             <h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发起</h2>
             <hr>
             <form action="/publish" method="post">
+                <input type="hidden" name="id" th:value="${question}!=null?${question.getId()}:''">
                 <div class="form-group">
                     <label for="title">问题标题（简单扼要）</label>
                     <input type="text" th:value="${question}!=null?${question.getTitle()}:''"  class="form-control" id="title" name="title" placeholder="问题标题">
@@ -32,7 +33,7 @@
                     <input type="text"  th:value="${question}!=null?${question.getTag()}:''" class="form-control" id="tag" name="tag" placeholder="输入标签以，隔开">
                 </div>
                 <span th:if="${msg}!=null" class="alert alert-danger" role="alert" th:text="${msg}"></span>
-                <button type="submit" class="btn btn-success btn-publish">发布</button>
+                <button type="submit" class="btn btn-success btn-publish" th:text="(${question}!=null?${question.getId()}:'') ==''?'发布':'修改' ">发布</button>
             </form>
         </div>
         <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">

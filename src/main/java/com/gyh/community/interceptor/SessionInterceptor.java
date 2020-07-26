@@ -50,6 +50,6 @@ public class SessionInterceptor implements HandlerInterceptor {
                 break;
             }
         }
-        return false;
+        return true;
     }
 }

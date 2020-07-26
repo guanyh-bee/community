@@ -1,14 +1,18 @@
 package com.gyh.community.controller;
 
+import com.gyh.community.dto.QuestionDTO;
 import com.gyh.community.mapper.QuestionMapper;
 import com.gyh.community.mapper.UserMapper;
 import com.gyh.community.model.Question;
 import com.gyh.community.model.User;
+import com.gyh.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -20,8 +24,8 @@ import javax.servlet.http.HttpSession;
  */
 @Controller
 public class PublishController {
-    @Autowired(required = false)
-    QuestionMapper questionMapper;
+    @Autowired
+    QuestionService questionServicer;
     @Autowired(required = false)
     UserMapper userMapper;
     @GetMapping("/publish")
@@ -53,12 +57,29 @@ public class PublishController {
 
             return "publish";
         }else {
-            question.setGmtCreate(System.currentTimeMillis());
-            question.setGmtModified(System.currentTimeMillis());
+
             question.setCreator(user.getId());
-            questionMapper.question(question);
+            questionServicer.createOrUpdate(question);
             return "redirect:/";
         }
 
+    }
+    @RequestMapping("/publish/{id}")
+    public String edit(@PathVariable("id") Integer id,Model model){
+        QuestionDTO question = questionServicer.getById(id);
+        model.addAttribute("question",question);
+        if(question.getTitle()==""){
+            model.addAttribute("msg","标题不能为空");
+            return "publish";
+        }
+        if(question.getDescription()==""){
+            model.addAttribute("msg","问题补充不能为空");
+            return "publish";
+        }
+        if(question.getTag()==""){
+            model.addAttribute("msg","标签不能为空");
+            return "publish";
+        }
+        return "publish";
     }
 }
