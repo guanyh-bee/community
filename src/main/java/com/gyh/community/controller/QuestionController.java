@@ -1,5 +1,6 @@
 package com.gyh.community.controller;
 
+import com.gyh.community.Exception.CustomizeException;
 import com.gyh.community.dto.QuestionDTO;
 import com.gyh.community.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,12 @@ public class QuestionController {
     private QuestionService questionService;
     @GetMapping("/question/{id}")
     public String question(@PathVariable("id")Integer id, Model model){
+
+
         QuestionDTO questionDTO = questionService.getById(id);
+        if(questionDTO == null){
+            throw new CustomizeException("你查找的问题不存在，换个问题试试？");
+        }
         model.addAttribute("questionDTO",questionDTO);
         return "question";
     }

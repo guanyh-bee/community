@@ -7,7 +7,7 @@ import com.gyh.community.model.User;
 import com.gyh.community.provider.GithubProvider;
 import com.gyh.community.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -52,7 +52,9 @@ public class AuthorizeController {
             user.setToken(token);
             user.setAvatar(githubUseruser.getAvatar_url());
             user = userService.createOrUpdate(user);
-            response.addCookie(new Cookie("token",token));
+            Cookie cookie = new Cookie("token", token);
+            response.addCookie(cookie);
+
             session.setAttribute("user",user);
             return "redirect:/";
         }
@@ -61,7 +63,6 @@ public class AuthorizeController {
     public String logout(HttpServletRequest request, HttpServletResponse response){
         request.getSession().removeAttribute("user");
         Cookie cookie = new Cookie("token", null);
-
         cookie.setMaxAge(0);
         response.addCookie(cookie);
 
