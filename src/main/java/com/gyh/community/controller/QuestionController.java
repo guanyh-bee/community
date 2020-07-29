@@ -22,9 +22,7 @@ public class QuestionController {
 
 
         QuestionDTO questionDTO = questionService.getById(id);
-        if(questionDTO == null){
-            throw new CustomizeException("你查找的问题不存在，换个问题试试？");
-        }
+
         model.addAttribute("questionDTO",questionDTO);
         return "question";
     }

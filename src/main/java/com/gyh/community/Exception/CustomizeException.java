@@ -6,8 +6,8 @@ package com.gyh.community.Exception;
  */
 public class CustomizeException extends RuntimeException{
     private String message;
-    public CustomizeException(String message){
-        this.message = message;
+    public CustomizeException(ICustomizeErrorCode errorCode ){
+        this.message = errorCode.getMessage();
     }
 
     @Override
@@ -15,7 +15,23 @@ public class CustomizeException extends RuntimeException{
         return message;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public CustomizeException() {
+        super();
+    }
+
+    public CustomizeException(String message) {
+        super(message);
+    }
+
+    public CustomizeException(String message, Throwable cause) {
+        super(message, cause);
+    }
+
+    public CustomizeException(Throwable cause) {
+        super(cause);
+    }
+
+    protected CustomizeException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+        super(message, cause, enableSuppression, writableStackTrace);
     }
 }

@@ -1,5 +1,8 @@
 package com.gyh.community.service;
 
+import com.gyh.community.Exception.CustomizeErrorCode;
+import com.gyh.community.Exception.CustomizeException;
+import com.gyh.community.Exception.ICustomizeErrorCode;
 import com.gyh.community.dto.PaginationDTO;
 import com.gyh.community.dto.QuestionDTO;
 import com.gyh.community.mapper.QuestionMapper;
@@ -79,6 +82,9 @@ public class QuestionService {
 
     public QuestionDTO getById(Integer id) {
         Question question = questionMapper.selectByPrimaryKey(id);
+        if(question == null){
+            throw new CustomizeException(CustomizeErrorCode.QUEST_NOT_FOUND);
+        }
         User user = userMapper.selectByPrimaryKey(question.getCreator());
         QuestionDTO questionDTO = new QuestionDTO();
         BeanUtils.copyProperties(question,questionDTO);
@@ -93,7 +99,10 @@ public class QuestionService {
             questionMapper.insertSelective(question);
         }else {
             question.setGmtModified(System.currentTimeMillis());
-            questionMapper.updateByPrimaryKeySelective(question);
+            Integer updated = questionMapper.updateByPrimaryKeySelective(question);
+            if(updated != 1){
+                throw new CustomizeException(CustomizeErrorCode.QUEST_NOT_FOUND);
+            }
         }
     }
 }
