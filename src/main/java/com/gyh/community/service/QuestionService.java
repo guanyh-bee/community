@@ -2,9 +2,9 @@ package com.gyh.community.service;
 
 import com.gyh.community.Exception.CustomizeErrorCode;
 import com.gyh.community.Exception.CustomizeException;
-import com.gyh.community.Exception.ICustomizeErrorCode;
 import com.gyh.community.dto.PaginationDTO;
 import com.gyh.community.dto.QuestionDTO;
+import com.gyh.community.mapper.QuestionExtMapper;
 import com.gyh.community.mapper.QuestionMapper;
 import com.gyh.community.mapper.UserMapper;
 import com.gyh.community.model.Question;
@@ -29,14 +29,15 @@ public class QuestionService {
     @Autowired(required = false)
     QuestionMapper questionMapper;
 
-
+    @Autowired(required = false)
+    QuestionExtMapper questionExtMapper;
     public PaginationDTO list(Integer page, Integer size) {
         Integer totalPage;
         QuestionExample questionExample = new QuestionExample();
         int totalCount = (int) questionMapper.countByExample(questionExample);
         PaginationDTO paginationDTO = new PaginationDTO();
         paginationDTO.setPagination(totalCount,page,size);
-        Integer offSet = (page-1)*size;
+        Integer offSet = (paginationDTO.getPage()-1)*size;
         RowBounds rowBounds = new RowBounds(offSet,size);
         List<Question> questions = questionMapper.selectByExampleWithRowbounds(new QuestionExample(),rowBounds);
         List<QuestionDTO> questionDTOS = new ArrayList<>();
@@ -104,5 +105,12 @@ public class QuestionService {
                 throw new CustomizeException(CustomizeErrorCode.QUEST_NOT_FOUND);
             }
         }
+    }
+
+    public void incView(Integer id) {
+        Question question = new Question();
+        question.setId(id);
+        question.setViewCount(1);
+        questionExtMapper.incView(question);
     }
 }

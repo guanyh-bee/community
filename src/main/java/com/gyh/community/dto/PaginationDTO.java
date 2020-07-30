@@ -39,7 +39,7 @@ public class PaginationDTO {
         if (page < 1) {
             page = 1;
         }
-        if (totalPage < page) {
+        if (totalPage <page) {
             page = totalPage;
         }
         this.page = page;

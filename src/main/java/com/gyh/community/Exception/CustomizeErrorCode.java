@@ -1,14 +1,27 @@
 package com.gyh.community.Exception;
 
 public enum CustomizeErrorCode  implements ICustomizeErrorCode{
-    QUEST_NOT_FOUND("你查找的问题不存在，换个问题试试？");
+    QUEST_NOT_FOUND("你查找的问题不存在，换个问题试试？",2001),
+    COMMENT_PARAM_NOT_FOUND("未选择任何问题或评论回复？",2002),
+    NOT_LOGIN("没有登录，不能评论",2003),
+    SYS_ERR("服务冒烟了，请稍后再试",2004),
+    COMMENT_TYPE_WRONG("评论类型错误或不存在",2005),
+    COMMENT_NOT_FOUND("回复的评论不存在了，换一个试试",2005);
+
     private String message;
-    CustomizeErrorCode(String s) {
-        this.message = s;
+    private Integer code;
+    CustomizeErrorCode(String message, Integer code) {
+        this.message = message;
+        this.code = code;
     }
 
     @Override
     public String getMessage() {
         return message;
+    }
+
+    @Override
+    public Integer getCode() {
+        return code;
     }
 }
