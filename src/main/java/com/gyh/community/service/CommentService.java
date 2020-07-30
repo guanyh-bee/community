@@ -4,6 +4,7 @@ import com.gyh.community.Exception.CustomizeErrorCode;
 import com.gyh.community.Exception.CustomizeException;
 import com.gyh.community.enums.CommentTypeEnum;
 import com.gyh.community.mapper.CommentMapper;
+import com.gyh.community.mapper.QuestionExtMapper;
 import com.gyh.community.mapper.QuestionMapper;
 import com.gyh.community.model.Comment;
 import com.gyh.community.model.Question;
@@ -20,6 +21,8 @@ public class CommentService {
     CommentMapper commentMapper;
     @Autowired(required = false)
     QuestionMapper questionMapper;
+    @Autowired(required = false)
+    QuestionExtMapper questionExtMapper;
     public void insertSelective(Comment comment) {
         if(comment.getParentId() == null || comment.getParentId() == 0){
             throw new CustomizeException(CustomizeErrorCode.COMMENT_PARAM_NOT_FOUND);
@@ -42,6 +45,8 @@ public class CommentService {
                 throw new CustomizeException(CustomizeErrorCode.QUEST_NOT_FOUND);
             }
             commentMapper.insert(comment);
+            question.setCommentCount(1);
+            questionExtMapper.incComment(question);
         }
     }
 }
