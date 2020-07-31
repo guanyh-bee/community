@@ -10,6 +10,7 @@ import com.gyh.community.model.Comment;
 import com.gyh.community.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @author gyh
@@ -23,6 +24,7 @@ public class CommentService {
     QuestionMapper questionMapper;
     @Autowired(required = false)
     QuestionExtMapper questionExtMapper;
+    @Transactional
     public void insertSelective(Comment comment) {
         if(comment.getParentId() == null || comment.getParentId() == 0){
             throw new CustomizeException(CustomizeErrorCode.COMMENT_PARAM_NOT_FOUND);

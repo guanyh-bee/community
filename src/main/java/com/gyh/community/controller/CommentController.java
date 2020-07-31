@@ -3,7 +3,6 @@ package com.gyh.community.controller;
 import com.gyh.community.Exception.CustomizeErrorCode;
 import com.gyh.community.dto.CommentDTO;
 import com.gyh.community.dto.ResultDTO;
-import com.gyh.community.mapper.CommentMapper;
 import com.gyh.community.model.Comment;
 import com.gyh.community.model.User;
 import com.gyh.community.service.CommentService;
@@ -14,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.Map;
+
 
 /**
  * @author gyh
