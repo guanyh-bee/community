@@ -7,10 +7,16 @@ import com.gyh.community.mapper.CommentMapper;
 import com.gyh.community.mapper.QuestionExtMapper;
 import com.gyh.community.mapper.QuestionMapper;
 import com.gyh.community.model.Comment;
+import com.gyh.community.model.CommentExample;
 import com.gyh.community.model.Question;
+import com.gyh.community.model.QuestionExample;
+import com.gyh.community.vo.CommentVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author gyh
@@ -24,6 +30,8 @@ public class CommentService {
     QuestionMapper questionMapper;
     @Autowired(required = false)
     QuestionExtMapper questionExtMapper;
+
+
     @Transactional
     public void insertSelective(Comment comment) {
         if(comment.getParentId() == null || comment.getParentId() == 0){
@@ -50,5 +58,19 @@ public class CommentService {
             question.setCommentCount(1);
             questionExtMapper.incComment(question);
         }
+    }
+
+    public List<CommentVO> listByQuestionId(Integer id) {
+        CommentExample commentExample = new CommentExample();
+        long idC = id;
+        commentExample.createCriteria().andParentIdEqualTo(idC).andTypeEqualTo(CommentTypeEnum.QUESTION.getType());
+        List<Comment> comments = commentMapper.selectByExample(commentExample);
+        if(comments.size() == 0){
+            return new ArrayList<>();
+        }else {
+
+        }
+
+        return null;
     }
 }

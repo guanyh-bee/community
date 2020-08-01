@@ -26,7 +26,7 @@ public class CommentController {
     CommentService commentService;
     @ResponseBody
     @PostMapping("/comment")
-    public ResultDTO<Comment> post(@RequestBody CommentDTO commentDTO, HttpSession session){
+    public ResultDTO<Comment> post( @RequestBody  CommentDTO commentDTO, HttpSession session){
         User user = (User) session.getAttribute("user");
         if(user == null){
             return ResultDTO.errorOf(CustomizeErrorCode.NOT_LOGIN);

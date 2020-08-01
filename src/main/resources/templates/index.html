@@ -8,7 +8,15 @@
     <link rel="stylesheet" href="css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="css/community.css">
     <script src="js/bootstrap.min.js" type="application/javascript"></script>
-
+<script type="application/ecmascript">
+    window.onload = function (){
+        var item = window.localStorage.getItem("closeable");
+        if(item=="true"){
+            window.close();
+            window.localStorage.removeItem("closeable");
+        }
+    };
+</script>
 
 </head>
 <body>
