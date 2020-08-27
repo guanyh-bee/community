@@ -23,7 +23,7 @@ import java.io.PrintWriter;
 @ControllerAdvice
 public class CustomizeExceptionHandler {
     @ExceptionHandler(Exception.class)
-    Object handleControllerException(HttpServletRequest request, HttpServletResponse response ,Throwable ex, Model model) {
+    ModelAndView handleControllerException(HttpServletRequest request, HttpServletResponse response ,Throwable ex, Model model) {
         HttpStatus status = getStatus(request);
         String contentType = request.getContentType();
         ResultDTO resultDTO = null;

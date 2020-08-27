@@ -32,7 +32,9 @@ public class ResultDTO<T> implements Serializable {
     public static<T> ResultDTO errorOf(CustomizeException exception){
         return new ResultDTO<T>(exception.getCode(),exception.getMessage());
     }
-
+    public static<T> ResultDTO okOf(T t){
+        return new ResultDTO<T>(200,"成功",t);
+    }
 
     public Integer getCode() {
         return code;

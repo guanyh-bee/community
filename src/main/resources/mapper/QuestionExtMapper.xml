@@ -38,4 +38,11 @@
     where ID = #{id}
   </update>
 
+  <select id="selectRelated" parameterType="com.gyh.community.model.Question" resultType="com.gyh.community.model.Question">
+    select
+    *
+    from QUESTION
+    where ID != #{id} and TAG regexp #{tag}
+  </select>
+
 </mapper>

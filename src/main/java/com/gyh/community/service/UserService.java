@@ -26,7 +26,6 @@ public class UserService {
         }else {
             //update
             User dbUser = users.get(0);
-
             User update = new User();
             update.setGmtModified(System.currentTimeMillis());
             update.setBio(user.getBio());

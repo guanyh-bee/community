@@ -1,8 +1,10 @@
 package com.gyh.community.controller;
 
-import com.gyh.community.Exception.CustomizeException;
+
 import com.gyh.community.dto.QuestionDTO;
-import com.gyh.community.model.Comment;
+import com.gyh.community.enums.CommentTypeEnum;
+
+import com.gyh.community.model.Question;
 import com.gyh.community.service.CommentService;
 import com.gyh.community.service.QuestionService;
 import com.gyh.community.vo.CommentVO;
@@ -31,8 +33,10 @@ public class QuestionController {
         QuestionDTO questionDTO = questionService.getById(id);
         questionService.incView(id);
         questionDTO.setViewCount(questionDTO.getViewCount()+1);
-
-        List<CommentVO> comments = commentService.listByQuestionId(id);
+        List<QuestionDTO> relatedQuestions = commentService.listRalated(questionDTO);
+        List<CommentVO> comments = commentService.listByQuestionId(id, CommentTypeEnum.QUESTION);
+        model.addAttribute("relatedQuestions",relatedQuestions);
+        model.addAttribute("commentVOs",comments);
         model.addAttribute("questionDTO",questionDTO);
         return "question";
     }

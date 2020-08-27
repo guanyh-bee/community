@@ -3,16 +3,18 @@ package com.gyh.community.controller;
 import com.gyh.community.Exception.CustomizeErrorCode;
 import com.gyh.community.dto.CommentDTO;
 import com.gyh.community.dto.ResultDTO;
+import com.gyh.community.enums.CommentTypeEnum;
 import com.gyh.community.model.Comment;
 import com.gyh.community.model.User;
 import com.gyh.community.service.CommentService;
+import com.gyh.community.vo.CommentVO;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 
 /**
@@ -31,6 +33,9 @@ public class CommentController {
         if(user == null){
             return ResultDTO.errorOf(CustomizeErrorCode.NOT_LOGIN);
         }
+        if(commentDTO == null || StringUtils.isBlank(commentDTO.getContent())){
+            return ResultDTO.errorOf(CustomizeErrorCode.COMMENT_CONTENT_EMPTY);
+        }
         Comment comment = new Comment();
         comment.setCommentator(user.getId());
         comment.setParentId(commentDTO.getParentId());
@@ -39,7 +44,15 @@ public class CommentController {
         comment.setGmtCreate(System.currentTimeMillis());
         comment.setGmtModified(System.currentTimeMillis());
 
+
         commentService.insertSelective(comment);
         return new ResultDTO(200,"成功",comment);
+    }
+
+    @ResponseBody
+    @GetMapping("/comment/{id}")
+    public ResultDTO<Comment> comments(@PathVariable("id")Integer id, HttpSession session){
+        List<CommentVO> commentVOS = commentService.listByQuestionId(id, CommentTypeEnum.COMMENT);
+        return ResultDTO.okOf(commentVOS);
     }
 }

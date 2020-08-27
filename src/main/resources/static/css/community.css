@@ -22,6 +22,10 @@ body{
     color: #999;
 }
 
+.question-tag{
+    margin-right: 8px;
+}
+
 .profile .section{
     margin-top: 15px;
 }
@@ -36,6 +40,20 @@ body{
     float: right;
     margin-bottom: 10px;
 }
+.subs-comment .btn{
+    margin-top: 10px;
+}
+.subs-comment .input-reply{
+    margin-top: 10px;
+}
+
+.sub-comment{
+    margin-top: 15px;
+    margin-bottom: 15px;
+    border: 1px solid #eee;
+    padding-top: 15px;
+    border-radius: 6px;
+}
 .menu{
     color: #999;
     margin-top: 6px;
@@ -46,6 +64,16 @@ body{
     cursor: pointer;
 
 }
+.menu .active{
+    color: #499ef3;
+
+}
 .menu .icon:hover{
     color: #499ef3;
+}
+
+.content-section{
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
 }
