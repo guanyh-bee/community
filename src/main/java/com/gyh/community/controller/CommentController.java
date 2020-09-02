@@ -4,7 +4,11 @@ import com.gyh.community.Exception.CustomizeErrorCode;
 import com.gyh.community.dto.CommentDTO;
 import com.gyh.community.dto.ResultDTO;
 import com.gyh.community.enums.CommentTypeEnum;
+import com.gyh.community.enums.NotificationStatusEnum;
+import com.gyh.community.enums.NotificationTypeEnum;
+import com.gyh.community.mapper.NotificationMapper;
 import com.gyh.community.model.Comment;
+import com.gyh.community.model.Notification;
 import com.gyh.community.model.User;
 import com.gyh.community.service.CommentService;
 import com.gyh.community.vo.CommentVO;
@@ -26,6 +30,8 @@ public class CommentController {
 
     @Autowired
     CommentService commentService;
+
+
     @ResponseBody
     @PostMapping("/comment")
     public ResultDTO<Comment> post( @RequestBody  CommentDTO commentDTO, HttpSession session){
@@ -45,13 +51,14 @@ public class CommentController {
         comment.setGmtModified(System.currentTimeMillis());
 
 
-        commentService.insertSelective(comment);
+        commentService.insertSelective(comment,user);
+
         return new ResultDTO(200,"成功",comment);
     }
 
     @ResponseBody
     @GetMapping("/comment/{id}")
-    public ResultDTO<Comment> comments(@PathVariable("id")Integer id, HttpSession session){
+    public ResultDTO<Comment> comments(@PathVariable("id")Integer id){
         List<CommentVO> commentVOS = commentService.listByQuestionId(id, CommentTypeEnum.COMMENT);
         return ResultDTO.okOf(commentVOS);
     }

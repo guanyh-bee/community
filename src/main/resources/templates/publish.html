@@ -43,18 +43,18 @@
 
                         <!-- Nav tabs -->
                         <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" th:each="tags:${selectTags}"><a th:href="${'#'+tags.category}"
+                            <li role="presentation" th:each="tags,tagsStat:${selectTags}" th:class="${tagsStat.first?'active':''}"><a th:href="${'#'+tags.category}"
                                                                                     aria-controls="home" role="tab"
                                                                                     data-toggle="tab"
-                                                                                    th:text="${tags.category}">开发语言</a>
+                                                                                    th:text="${tags.category}" >开发语言</a>
                             </li>
 
                         </ul>
 
                         <!-- Tab panes -->
                         <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane" th:id="${category.category}"
-                                 th:each="category:${selectTags}">
+                            <div role="tabpanel" class="tab-pane" th:id="${category.category}" th:class="${categoryStat.first?'active tab-pane':'tab-pane'}"
+                                 th:each="category,categoryStat:${selectTags}">
                                 <span class="label label-info question-tag" th:each="selectTag:${category.tags}"><span
                                         class="glyphicon glyphicon-tag" th:data-tag="${selectTag}"
                                         th:text="${selectTag}" onclick="selectTag(this)">java</span></span>

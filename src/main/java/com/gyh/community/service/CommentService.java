@@ -5,6 +5,8 @@ import com.gyh.community.Exception.CustomizeException;
 import com.gyh.community.dto.CommentDTO;
 import com.gyh.community.dto.QuestionDTO;
 import com.gyh.community.enums.CommentTypeEnum;
+import com.gyh.community.enums.NotificationStatusEnum;
+import com.gyh.community.enums.NotificationTypeEnum;
 import com.gyh.community.mapper.*;
 import com.gyh.community.model.*;
 import com.gyh.community.vo.CommentVO;
@@ -36,10 +38,12 @@ public class CommentService {
     UserMapper userMapper;
     @Autowired(required = false)
     CommentExtMapper commentExtMapper;
+    @Autowired(required = false)
+    NotificationMapper notificationMapper;
 
 
     @Transactional
-    public void insertSelective(Comment comment) {
+    public void insertSelective(Comment comment,User commentator) {
         if (comment.getParentId() == null || comment.getParentId() == 0) {
             throw new CustomizeException(CustomizeErrorCode.COMMENT_PARAM_NOT_FOUND);
         }
@@ -57,6 +61,29 @@ public class CommentService {
             comment1.setId(comment.getParentId());
             comment1.setCommentCount(1);
             commentExtMapper.incCommentCount(comment1);
+            //通知
+            Notification notification = new Notification();
+            notification.setGmtCreate(System.currentTimeMillis());
+            notification.setType(NotificationTypeEnum.REPLY_COMMENT.getType());
+            notification.setOuterId(Math.toIntExact(comment.getParentId()));
+            notification.setNotifier(comment.getCommentator());
+            notification.setStatus(NotificationStatusEnum.UNREAD.getStatus());
+            notification.setReceiver(dbcomment.getCommentator());
+
+
+            long parentId = comment.getParentId();
+            Comment dbComment = commentMapper.selectByPrimaryKey(parentId);
+            Long parentId1 = dbComment.getParentId();
+            Integer parentId2 = Math.toIntExact(parentId1);
+            Question question = questionMapper.selectByPrimaryKey(parentId2);
+            if (question == null) {
+                throw new CustomizeException(CustomizeErrorCode.QUEST_NOT_FOUND);
+            }
+            notification.setOuterTitle(comment.getContent());
+            notification.setNotifierName(commentator.getName());
+            notification.setOuterId(question.getId());
+            notificationMapper.insertSelective(notification);
+
         } else {
             //回复问题
             long parentId = comment.getParentId();
@@ -67,6 +94,18 @@ public class CommentService {
             commentMapper.insertSelective(comment);
             question.setCommentCount(1);
             questionExtMapper.incComment(question);
+
+            Notification notification = new Notification();
+            notification.setGmtCreate(System.currentTimeMillis());
+            notification.setType(NotificationTypeEnum.REPLY_QUESTION.getType());
+            notification.setOuterId(Math.toIntExact(comment.getParentId()));
+            notification.setNotifier(comment.getCommentator());
+            notification.setStatus(NotificationStatusEnum.UNREAD.getStatus());
+            notification.setReceiver(question.getCreator());
+            notification.setNotifierName(commentator.getName());
+            notification.setOuterTitle(question.getTitle());
+            notification.setOuterId(question.getId());
+            notificationMapper.insertSelective(notification);
         }
     }
 

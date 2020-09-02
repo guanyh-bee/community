@@ -23,6 +23,7 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li th:if="${session.user}!=null"><a href="/publish">发布</a></li>
+                <li><a href="/profile/replies">通知 &nbsp;<span class="badge" >1</span></a></li>
                 <li th:if="${session.user==null}"><a
                         href="https://github.com/login/oauth/authorize?client_id=Iv1.17b170297832cc61&redirect_uri=http://localhost:9999/callback&scope=user&state=11">登录</a>
                 </li>
@@ -33,6 +34,7 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
+
                         <li><a href="/profile/questions">我的问题</a></li>
                         <li><a href="/logout">退出登录</a></li>
 

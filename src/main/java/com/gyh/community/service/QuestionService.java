@@ -51,7 +51,7 @@ public class QuestionService {
             questionDTO.setUser(user);
             questionDTOS.add(questionDTO);
         }
-        paginationDTO.setQuestionDTOS(questionDTOS);
+        paginationDTO.setData(questionDTOS);
         return paginationDTO;
     }
 
@@ -61,7 +61,7 @@ public class QuestionService {
         questionExample.createCriteria().andCreatorEqualTo(userId);
         int totalCount = (int) questionMapper.countByExample(questionExample);
         //Integer totalCount = questionMapper.countByUserId(userId);
-        PaginationDTO paginationDTO = new PaginationDTO();
+        PaginationDTO<QuestionDTO> paginationDTO = new PaginationDTO();
         paginationDTO.setPagination(totalCount,page,size);
         Integer offSet = (page-1)*size;
         questionExample.clear();
@@ -79,7 +79,7 @@ public class QuestionService {
             questionDTO.setUser(user);
             questionDTOS.add(questionDTO);
         }
-        paginationDTO.setQuestionDTOS(questionDTOS);
+        paginationDTO.setData(questionDTOS);
         return paginationDTO;
     }
 
