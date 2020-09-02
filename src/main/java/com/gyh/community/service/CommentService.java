@@ -79,7 +79,7 @@ public class CommentService {
             if (question == null) {
                 throw new CustomizeException(CustomizeErrorCode.QUEST_NOT_FOUND);
             }
-            notification.setOuterTitle(comment.getContent());
+            notification.setOuterTitle(dbcomment.getContent());
             notification.setNotifierName(commentator.getName());
             notification.setOuterId(question.getId());
             notificationMapper.insertSelective(notification);

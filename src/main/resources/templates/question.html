@@ -99,11 +99,11 @@
                 <div class="media">
                     <div class="media-left">
                         <a href="#">
-                            <img class="media-object img-circle" th:src="${questionDTO.user.avatar}">
+                            <img class="media-object img-circle" th:src="${session.user.getAvatar()}">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h5 class="media-heading"><span th:text="${questionDTO.user.name}"></span></h5>
+                        <h5 class="media-heading"><span th:text="${session.user.name}"></span></h5>
                     </div>
                 </div>
                 <input type="hidden" th:value="${questionDTO.id}" id="question_id">
