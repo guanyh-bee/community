@@ -1,11 +1,14 @@
 package com.gyh.community.controller;
 
+import com.gyh.community.cache.TagCache;
 import com.gyh.community.dto.QuestionDTO;
+import com.gyh.community.dto.TagDTO;
 import com.gyh.community.mapper.QuestionMapper;
 import com.gyh.community.mapper.UserMapper;
 import com.gyh.community.model.Question;
 import com.gyh.community.model.User;
 import com.gyh.community.service.QuestionService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,13 +32,15 @@ public class PublishController {
     @Autowired(required = false)
     UserMapper userMapper;
     @GetMapping("/publish")
-    public String publish(){
+    public String publish(Model model){
+        model.addAttribute("selectTags",TagCache.get());
         return "publish";
     }
 
     @PostMapping("/publish")
     public String doPublish(Question question, HttpSession session, Model model, HttpServletRequest request){
         model.addAttribute("question",question);
+        model.addAttribute("selectTags",TagCache.get());
         if(question.getTitle()==""){
             model.addAttribute("msg","标题不能为空");
             return "publish";
@@ -46,6 +51,12 @@ public class PublishController {
         }
         if(question.getTag()==""){
             model.addAttribute("msg","标签不能为空");
+            return "publish";
+        }
+
+        String s = TagCache.checkTag(question.getTag());
+        if(StringUtils.isNotBlank(s)){
+            model.addAttribute("msg","输入非法标签"+s);
             return "publish";
         }
 
@@ -68,6 +79,7 @@ public class PublishController {
     public String edit(@PathVariable("id") Integer id,Model model){
         QuestionDTO question = questionServicer.getById(id);
         model.addAttribute("question",question);
+        model.addAttribute("selectTags",TagCache.get());
         if(question.getTitle()==""){
             model.addAttribute("msg","标题不能为空");
             return "publish";

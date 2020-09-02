@@ -133,3 +133,25 @@ function getzf(num) {
     }
     return num;
 }
+
+function selectTag(e){
+    var previous = $("#tag").val();
+    var tag = e.getAttribute("data-tag")
+    if(previous.indexOf(tag)!=-1){
+
+    }else {
+        if(previous){
+            $("#tag").val(previous+','+tag)
+        }else {
+            $("#tag").val(tag)
+        }
+    }
+
+
+
+}
+
+
+function showSelectTag(){
+    $("#select-tag").show();
+}

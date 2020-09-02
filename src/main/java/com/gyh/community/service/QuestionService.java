@@ -39,7 +39,9 @@ public class QuestionService {
         paginationDTO.setPagination(totalCount,page,size);
         Integer offSet = (paginationDTO.getPage()-1)*size;
         RowBounds rowBounds = new RowBounds(offSet,size);
-        List<Question> questions = questionMapper.selectByExampleWithRowbounds(new QuestionExample(),rowBounds);
+        QuestionExample questionExample1 = new QuestionExample();
+        questionExample1.setOrderByClause("gmt_modified desc");
+        List<Question> questions = questionMapper.selectByExampleWithRowbounds(questionExample1,rowBounds);
         List<QuestionDTO> questionDTOS = new ArrayList<>();
 
         for (Question question : questions) {
