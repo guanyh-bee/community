@@ -58,6 +58,10 @@ public class CommentService {
             if (dbcomment == null) {
                 throw new CustomizeException(CustomizeErrorCode.COMMENT_NOT_FOUND);
             }
+
+            if(comment.getCommentator() == dbcomment.getCommentator()){
+                return;
+            }
             commentMapper.insertSelective(comment);
             Comment comment1 = new Comment();
             comment1.setId(comment.getParentId());
@@ -96,7 +100,9 @@ public class CommentService {
             commentMapper.insertSelective(comment);
             question.setCommentCount(1);
             questionExtMapper.incComment(question);
-
+            if(question.getCreator() == comment.getCommentator()){
+                return;
+            }
             Notification notification = new Notification();
             notification.setGmtCreate(System.currentTimeMillis());
             notification.setType(NotificationTypeEnum.REPLY_QUESTION.getType());

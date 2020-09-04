@@ -31,17 +31,33 @@ public class QuestionService {
 
     @Autowired(required = false)
     QuestionExtMapper questionExtMapper;
-    public PaginationDTO list(Integer page, Integer size) {
-        Integer totalPage;
+    //获取所有问题列表，有搜索展示搜索相关问题
+    public PaginationDTO list(Integer page, Integer size,String search) {
         QuestionExample questionExample = new QuestionExample();
-        int totalCount = (int) questionMapper.countByExample(questionExample);
+        int totalCount;
+        if(search == null){
+            totalCount = (int) questionMapper.countByExample(questionExample);
+        }else {
+            questionExample.createCriteria().andTitleLike("%"+search+"%");
+            totalCount = (int) questionMapper.countByExample(questionExample);
+        }
+
+
         PaginationDTO paginationDTO = new PaginationDTO();
         paginationDTO.setPagination(totalCount,page,size);
         Integer offSet = (paginationDTO.getPage()-1)*size;
         RowBounds rowBounds = new RowBounds(offSet,size);
         QuestionExample questionExample1 = new QuestionExample();
         questionExample1.setOrderByClause("gmt_modified desc");
-        List<Question> questions = questionMapper.selectByExampleWithRowbounds(questionExample1,rowBounds);
+        List<Question> questions;
+        if(search == null){
+            questions  = questionMapper.selectByExampleWithRowbounds(questionExample1,rowBounds);
+        }else {
+            questionExample1.createCriteria().andTitleLike("%"+search+"%");
+            questions = questionMapper.selectByExampleWithRowbounds(questionExample1,rowBounds);
+        }
+
+
         List<QuestionDTO> questionDTOS = new ArrayList<>();
 
         for (Question question : questions) {
@@ -54,7 +70,7 @@ public class QuestionService {
         paginationDTO.setData(questionDTOS);
         return paginationDTO;
     }
-
+    //获取用户问题列表
     public PaginationDTO getList(Integer userId, Integer page, Integer size) {
         Integer totalPage;
         QuestionExample questionExample = new QuestionExample();

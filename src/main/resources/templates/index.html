@@ -49,20 +49,20 @@
                         </a>
                     </li>
                     <li th:if="${pagination.showPrevious}">
-                        <a href="#" aria-label="Previous" th:href="@{/(page=${pagination.page - 1})}">
+                        <a href="#" aria-label="Previous" th:href="@{/(page=${pagination.page - 1},search=${search})}">
                             <span aria-hidden="true">&lt;</span>
                         </a>
                     </li>
                     <li th:each="page:${pagination.pages}" th:class="${pagination.page == page}?'active':''"><a
-                            th:href="@{/(page=${page})}" href="#" th:text="${page}">1</a></li>
+                            th:href="@{/(page=${page},search=${search})}" href="#" th:text="${page}">1</a></li>
 
                     <li th:if="${pagination.showNext}">
-                        <a href="#" aria-label="Previous" th:href="@{/(page=${pagination.page + 1})}">
+                        <a href="#" aria-label="Previous" th:href="@{/(page=${pagination.page + 1},search=${search})}">
                             <span aria-hidden="true">&gt;</span>
                         </a>
                     </li>
                     <li th:if="${pagination.showEndPage}">
-                        <a href="#" aria-label="Previous" th:href="@{/(page=${pagination.totalPage})}">
+                        <a href="#" aria-label="Previous" th:href="@{/(page=${pagination.totalPage},search=${search})}">
                             <span aria-hidden="true">&gt;&gt;</span>
                         </a>
                     </li>
