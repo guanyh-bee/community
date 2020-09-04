@@ -51,7 +51,7 @@ public class CommentController {
         comment.setGmtModified(System.currentTimeMillis());
 
 
-        commentService.insertSelective(comment,user);
+        commentService.insertSelective(comment,user,session);
 
         return new ResultDTO(200,"成功",comment);
     }

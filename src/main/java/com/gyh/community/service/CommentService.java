@@ -16,6 +16,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,10 +41,11 @@ public class CommentService {
     CommentExtMapper commentExtMapper;
     @Autowired(required = false)
     NotificationMapper notificationMapper;
-
+    @Autowired
+    private NotificationService notificationService;
 
     @Transactional
-    public void insertSelective(Comment comment,User commentator) {
+    public void insertSelective(Comment comment, User commentator, HttpSession session) {
         if (comment.getParentId() == null || comment.getParentId() == 0) {
             throw new CustomizeException(CustomizeErrorCode.COMMENT_PARAM_NOT_FOUND);
         }
@@ -107,6 +109,9 @@ public class CommentService {
             notification.setOuterId(question.getId());
             notificationMapper.insertSelective(notification);
         }
+        User user = (User) session.getAttribute("user");
+        Integer unreadCount = notificationService.getUnreadCount(user.getId());
+        session.setAttribute("SessionUnreadCount",unreadCount);
     }
 
     public List<CommentVO> listByQuestionId(Integer id, CommentTypeEnum commentTypeEnum) {

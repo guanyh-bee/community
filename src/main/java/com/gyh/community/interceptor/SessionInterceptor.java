@@ -3,6 +3,7 @@ package com.gyh.community.interceptor;
 import com.gyh.community.mapper.UserMapper;
 import com.gyh.community.model.User;
 import com.gyh.community.model.UserExample;
+import com.gyh.community.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -25,6 +26,8 @@ public class SessionInterceptor implements HandlerInterceptor {
 
     @Autowired(required = false)
     private UserMapper userMapper;
+    @Autowired
+    private NotificationService notificationService;
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
@@ -50,8 +53,8 @@ public class SessionInterceptor implements HandlerInterceptor {
                     if (users.size() != 0) {
 
                         request.getSession().setAttribute("user", users.get(0));
-
-                        return true;
+                        Integer unreadCount = notificationService.getUnreadCount(users.get(0).getId());
+                        request.getSession().setAttribute("SessionUnreadCount",unreadCount);
                     }
                 }
                 break;
