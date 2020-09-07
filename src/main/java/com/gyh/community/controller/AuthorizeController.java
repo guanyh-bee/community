@@ -6,6 +6,7 @@ import com.gyh.community.mapper.UserMapper;
 import com.gyh.community.model.User;
 import com.gyh.community.provider.GithubProvider;
 import com.gyh.community.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,7 @@ import java.util.UUID;
  * @create 2020-07-06 14:55
  */
 @Controller
+@Slf4j
 public class AuthorizeController {
     @Autowired
     private GithubProvider githubProvider;
@@ -43,6 +45,7 @@ public class AuthorizeController {
         String accessToken = githubProvider.getAccessToken(accessTokenDTO);
         GithubUser githubUseruser = githubProvider.getUser(accessToken);
         if(githubUseruser == null){
+            log.error("callback get github err, {}" ,githubUseruser);
             return "redirect:/";
         }else {
             User user = new User();
@@ -56,6 +59,7 @@ public class AuthorizeController {
             response.addCookie(cookie);
 
             session.setAttribute("user",user);
+            log.info("成功{}",user.getName());
             return "redirect:/";
         }
     }
