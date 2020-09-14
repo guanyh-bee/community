@@ -2008,3 +2008,119 @@ org.springframework.expression.spel.SpelEvaluationException: EL1011E: Method cal
 2020-09-14 11:03:50.403  INFO 8812 --- [http-nio-9999-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2020-09-14 11:03:50.404  INFO 8812 --- [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2020-09-14 11:03:50.410  INFO 8812 --- [http-nio-9999-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 6 ms
+2020-09-14 13:45:53.224  WARN 86164 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2020-09-14 13:45:53.248  INFO 86164 --- [main] c.g.community.CommunityApplicationTests  : Starting CommunityApplicationTests on 10-9-76-222 with PID 86164 (started by root in /root/yum-3.4.3/app/community)
+2020-09-14 13:45:53.249  INFO 86164 --- [main] c.g.community.CommunityApplicationTests  : No active profile set, falling back to default profiles: default
+2020-09-14 13:45:55.265  INFO 86164 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-14 13:45:55.353  INFO 86164 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-09-14 13:45:55.634  INFO 86164 --- [main] c.g.community.CommunityApplicationTests  : Started CommunityApplicationTests in 2.835 seconds (JVM running for 3.684)
+2020-09-14 13:45:55.889  INFO 86164 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-14 14:03:43.192  INFO 86881 --- [main] c.g.community.CommunityApplicationTests  : Starting CommunityApplicationTests on 10-9-76-222 with PID 86881 (started by root in /root/yum-3.4.3/app/community)
+2020-09-14 14:03:43.193  INFO 86881 --- [main] c.g.community.CommunityApplicationTests  : No active profile set, falling back to default profiles: default
+2020-09-14 14:03:45.298  INFO 86881 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-14 14:03:45.385  INFO 86881 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-09-14 14:03:45.707  INFO 86881 --- [main] c.g.community.CommunityApplicationTests  : Started CommunityApplicationTests in 2.963 seconds (JVM running for 3.811)
+2020-09-14 14:03:45.921  INFO 86881 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-14 14:08:35.184  INFO 87146 --- [main] com.gyh.community.CommunityApplication   : Starting CommunityApplication v0.0.1-SNAPSHOT on 10-9-76-222 with PID 87146 (/root/yum-3.4.3/app/community/target/community-0.0.1-SNAPSHOT.jar started by root in /root/yum-3.4.3/app/community)
+2020-09-14 14:08:35.187  INFO 87146 --- [main] com.gyh.community.CommunityApplication   : The following profiles are active: production
+2020-09-14 14:08:36.849  INFO 87146 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2020-09-14 14:08:36.862  INFO 87146 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-14 14:08:36.862  INFO 87146 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-09-14 14:08:36.923  INFO 87146 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-14 14:08:36.924  INFO 87146 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1637 ms
+2020-09-14 14:08:37.705  INFO 87146 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-14 14:08:37.796  INFO 87146 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-09-14 14:08:37.982  INFO 87146 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2020-09-14 14:08:37.996  INFO 87146 --- [main] com.gyh.community.CommunityApplication   : Started CommunityApplication in 3.502 seconds (JVM running for 4.01)
+2020-09-14 14:09:32.823  INFO 87146 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-14 14:09:32.823  INFO 87146 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-14 14:09:32.833  INFO 87146 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2020-09-14 14:09:32.914  INFO 87146 --- [http-nio-80-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-14 14:09:33.193  INFO 87146 --- [http-nio-80-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-14 14:12:56.068  INFO 87146 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-14 14:12:56.069  INFO 87146 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-09-14 14:12:56.077  INFO 87146 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-09-14 14:21:58.950  INFO 87732 --- [main] c.g.community.CommunityApplicationTests  : Starting CommunityApplicationTests on 10-9-76-222 with PID 87732 (started by root in /root/yum-3.4.3/app/community)
+2020-09-14 14:21:58.951  INFO 87732 --- [main] c.g.community.CommunityApplicationTests  : No active profile set, falling back to default profiles: default
+2020-09-14 14:22:01.052  INFO 87732 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-14 14:22:01.158  INFO 87732 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-09-14 14:22:01.435  INFO 87732 --- [main] c.g.community.CommunityApplicationTests  : Started CommunityApplicationTests in 2.894 seconds (JVM running for 3.756)
+2020-09-14 14:22:01.661  INFO 87732 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-14 14:22:21.721  INFO 87931 --- [main] com.gyh.community.CommunityApplication   : Starting CommunityApplication v0.0.1-SNAPSHOT on 10-9-76-222 with PID 87931 (/root/yum-3.4.3/app/community/target/community-0.0.1-SNAPSHOT.jar started by root in /root/yum-3.4.3/app/community)
+2020-09-14 14:22:21.723  INFO 87931 --- [main] com.gyh.community.CommunityApplication   : The following profiles are active: production
+2020-09-14 14:22:23.405  INFO 87931 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2020-09-14 14:22:23.418  INFO 87931 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-14 14:22:23.419  INFO 87931 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-09-14 14:22:23.489  INFO 87931 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-14 14:22:23.490  INFO 87931 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1698 ms
+2020-09-14 14:22:24.393  INFO 87931 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-14 14:22:24.470  INFO 87931 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-09-14 14:22:24.666  INFO 87931 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2020-09-14 14:22:24.683  INFO 87931 --- [main] com.gyh.community.CommunityApplication   : Started CommunityApplication in 3.759 seconds (JVM running for 4.324)
+2020-09-14 14:22:30.414  INFO 87931 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-14 14:22:30.414  INFO 87931 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-14 14:22:30.425  INFO 87931 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 11 ms
+2020-09-14 14:22:30.501  INFO 87931 --- [http-nio-80-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-14 14:22:30.790  INFO 87931 --- [http-nio-80-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-14 14:23:10.155  INFO 87931 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-14 14:23:10.156  INFO 87931 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-09-14 14:23:10.161  INFO 87931 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-09-14 14:24:19.534  INFO 88165 --- [main] com.gyh.community.CommunityApplication   : Starting CommunityApplication v0.0.1-SNAPSHOT on 10-9-76-222 with PID 88165 (/root/yum-3.4.3/app/community/target/community-0.0.1-SNAPSHOT.jar started by root in /root/yum-3.4.3/app/community)
+2020-09-14 14:24:19.536  INFO 88165 --- [main] com.gyh.community.CommunityApplication   : The following profiles are active: production
+2020-09-14 14:24:21.094  INFO 88165 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2020-09-14 14:24:21.107  INFO 88165 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-14 14:24:21.108  INFO 88165 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-09-14 14:24:21.170  INFO 88165 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-14 14:24:21.171  INFO 88165 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1571 ms
+2020-09-14 14:24:22.063  INFO 88165 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-14 14:24:22.154  INFO 88165 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-09-14 14:24:22.353  INFO 88165 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2020-09-14 14:24:22.369  INFO 88165 --- [main] com.gyh.community.CommunityApplication   : Started CommunityApplication in 3.525 seconds (JVM running for 4.058)
+2020-09-14 14:24:41.451  INFO 88165 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-14 14:24:41.451  INFO 88165 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-14 14:24:41.459  INFO 88165 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-09-14 14:24:41.544  INFO 88165 --- [http-nio-80-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-14 14:24:41.865  INFO 88165 --- [http-nio-80-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-14 14:24:59.109  INFO 88165 --- [http-nio-80-exec-9] c.g.c.controller.AuthorizeController     : 成功林妹妹
+2020-09-14 14:50:30.678  INFO 88165 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-14 14:50:30.679  INFO 88165 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-09-14 14:50:30.682  INFO 88165 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-09-14 15:14:38.476  INFO 89269 --- [main] com.gyh.community.CommunityApplication   : Starting CommunityApplication v0.0.1-SNAPSHOT on 10-9-76-222 with PID 89269 (/root/yum-3.4.3/app/community/target/community-0.0.1-SNAPSHOT.jar started by root in /root/yum-3.4.3/app/community)
+2020-09-14 15:14:38.478  INFO 89269 --- [main] com.gyh.community.CommunityApplication   : The following profiles are active: production
+2020-09-14 15:14:40.131  INFO 89269 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2020-09-14 15:14:40.144  INFO 89269 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-14 15:14:40.145  INFO 89269 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-09-14 15:14:40.212  INFO 89269 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-14 15:14:40.213  INFO 89269 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1662 ms
+2020-09-14 15:14:41.047  INFO 89269 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-14 15:14:41.134  INFO 89269 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-09-14 15:14:41.338  INFO 89269 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2020-09-14 15:14:41.359  INFO 89269 --- [main] com.gyh.community.CommunityApplication   : Started CommunityApplication in 3.636 seconds (JVM running for 4.179)
+2020-09-14 15:14:43.021  INFO 89269 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-14 15:14:43.021  INFO 89269 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-14 15:14:43.030  INFO 89269 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2020-09-14 15:14:43.109  INFO 89269 --- [http-nio-80-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-14 15:14:43.416  INFO 89269 --- [http-nio-80-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-14 15:43:51.776  INFO 89269 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-14 15:43:51.777  INFO 89269 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-09-14 15:43:51.782  INFO 89269 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2020-09-14 16:13:23.900  INFO 90158 --- [main] com.gyh.community.CommunityApplication   : Starting CommunityApplication v0.0.1-SNAPSHOT on 10-9-76-222 with PID 90158 (/root/yum-3.4.3/app/community/target/community-0.0.1-SNAPSHOT.jar started by root in /root/yum-3.4.3/app/community)
+2020-09-14 16:13:23.903  INFO 90158 --- [main] com.gyh.community.CommunityApplication   : The following profiles are active: production
+2020-09-14 16:13:25.646  INFO 90158 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 80 (http)
+2020-09-14 16:13:25.660  INFO 90158 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2020-09-14 16:13:25.660  INFO 90158 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.36]
+2020-09-14 16:13:25.727  INFO 90158 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2020-09-14 16:13:25.727  INFO 90158 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1733 ms
+2020-09-14 16:13:26.572  INFO 90158 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2020-09-14 16:13:26.657  INFO 90158 --- [main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2020-09-14 16:13:26.835  INFO 90158 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 80 (http) with context path ''
+2020-09-14 16:13:26.856  INFO 90158 --- [main] com.gyh.community.CommunityApplication   : Started CommunityApplication in 3.746 seconds (JVM running for 4.298)
+2020-09-14 16:13:50.250  INFO 90158 --- [http-nio-80-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020-09-14 16:13:50.251  INFO 90158 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2020-09-14 16:13:50.259  INFO 90158 --- [http-nio-80-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2020-09-14 16:13:50.345  INFO 90158 --- [http-nio-80-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2020-09-14 16:13:50.656  INFO 90158 --- [http-nio-80-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2020-09-14 16:15:58.454  INFO 90158 --- [http-nio-80-exec-4] c.g.c.controller.AuthorizeController     : 成功林妹妹
+2020-09-14 16:17:16.791  INFO 90158 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'
+2020-09-14 16:17:16.791  INFO 90158 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2020-09-14 16:17:16.804  INFO 90158 --- [SpringContextShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
