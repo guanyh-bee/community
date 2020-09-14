@@ -23,7 +23,7 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li th:if="${session.user}!=null"><a href="/publish">发布</a></li>
-                <li><a href="/profile/replies">通知 &nbsp;<span class="badge" th:text="${session.SessionUnreadCount}">1</span></a></li>
+                <li><a href="/profile/replies">通知 &nbsp;<span class="badge" th:text="${session.user}!=null?${session.SessionUnreadCount}:'请先登录'">1</span></a></li>
                 <li th:if="${session.user==null}"><a
                         href="https://github.com/login/oauth/authorize?client_id=Iv1.17b170297832cc61&redirect_uri=http://localhost:9999/callback&scope=user&state=11">登录</a>
                 </li>

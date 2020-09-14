@@ -31,7 +31,7 @@ public class AuthorizeController {
     private GithubProvider githubProvider;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
     
 
     @GetMapping("callback")

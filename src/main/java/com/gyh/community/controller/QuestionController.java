@@ -45,8 +45,11 @@ public class QuestionController {
         model.addAttribute("commentVOs",comments);
         model.addAttribute("questionDTO",questionDTO);
         User user = (User) session.getAttribute("user");
-        Integer unreadCount = notificationService.getUnreadCount(user.getId());
-        session.setAttribute("SessionUnreadCount",unreadCount);
+        if(user != null){
+            Integer unreadCount = notificationService.getUnreadCount(user.getId());
+            session.setAttribute("SessionUnreadCount",unreadCount);
+        }
+
         return "question";
     }
 }

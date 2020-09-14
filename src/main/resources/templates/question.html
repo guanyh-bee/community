@@ -32,7 +32,7 @@
 
                 <div id="test-markdown-view">
                     <!-- Server-side output Markdown text -->
-                    <textarea style="display:none;" th:text="${questionDTO.description}">### Hello world!</textarea>
+                    <textarea style="display:none;" th:text="${questionDTO.description}"></textarea>
                 </div>
                 <script src="/editor.md-master/editormd.js"></script>
                 <script src="/editor.md-master/lib/marked.min.js"></script>
@@ -121,11 +121,11 @@
                 <div class="media">
                     <div class="media-left">
                         <a href="#">
-                            <img class="media-object img-circle" th:src="${session.user.getAvatar()}">
+                            <img class="media-object img-circle" th:src="${session.user}!=null? ${session.user.getAvatar()}:'/img/default.jpg'">
                         </a>
                     </div>
                     <div class="media-body">
-                        <h5 class="media-heading"><span th:text="${session.user.name}"></span></h5>
+                        <h5 class="media-heading"><span th:text="${session.user}!=null?${session.user.name}:'未登录'"></span></h5>
                     </div>
                 </div>
                 <input type="hidden" th:value="${questionDTO.id}" id="question_id">
