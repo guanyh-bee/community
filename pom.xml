@@ -116,22 +116,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <plugin>
-                <groupId>org.flywaydb</groupId>
-                <artifactId>flyway-maven-plugin</artifactId>
-                <version>6.5.1</version>
-                <configuration>
-                    <url>jdbc:mysql://106.75.80.131:3306/community</url>
-                    <user>root</user>
-                    <password>Passw0rd</password>
-                </configuration>
-                <dependencies>
-                    <dependency>
-                        <groupId>mysql</groupId>
-                        <artifactId>mysql-connector-java</artifactId>
-                    </dependency>
-                </dependencies>
-            </plugin>
+
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
